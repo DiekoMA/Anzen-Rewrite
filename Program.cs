@@ -56,10 +56,7 @@ public class Program
         await app.RunAsync();
     }
 
-    public async Task BuildDatabase()
-    {
-        string connectionString = ""
-    }
+
 
     public static async Task Main(string[] args)
     {
@@ -71,5 +68,16 @@ public class Program
         Console.WriteLine("Running on port 5050");
 
         await StartAnzenServer();
+        VaultDB vaultDb = new VaultDB(new ConfigData
+        {
+            Database = "postgress",
+            Host = "localhost",
+            Password = "test",
+            Port = 4023,
+            Username = "postgress"
+        });
+
+        vaultDb.CreateTable();
+
     }
 }
